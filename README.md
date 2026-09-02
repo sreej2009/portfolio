@@ -1,32 +1,39 @@
-# React + TypeScript + Vite
+# Sree — Creative Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Live: https://sreej2009.github.io/portfolio/
 
-Currently, two official plugins are available:
+A premium, scroll-driven 3D portfolio built with React, TypeScript, Vite, React Three Fiber, GSAP/ScrollTrigger and Lenis. One persistent WebGL canvas evolves through every section — an orbital chrome-and-glass sculpture that reshapes into a constellation, a project gallery, and a timeline as you scroll.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Develop
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Build
+
+```bash
+npm run build   # output in dist/
+npm run preview # serve the production build locally
+```
+
+## Deploy (GitHub Pages)
+
+The site is deployed to the `gh-pages` branch of this repo and served at the URL above. To redeploy after making changes:
+
+```bash
+rm -rf dist
+GITHUB_PAGES=true npm run build   # builds with the /portfolio/ base path
+cd dist
+git init -q
+git add -A
+git commit -q -m "Deploy"
+git branch -M gh-pages
+git remote add origin https://github.com/sreej2009/portfolio.git
+git push -f origin gh-pages
+cd ..
+rm -rf dist/.git
+```
+
+`GITHUB_PAGES=true` switches the Vite `base` and the app's data (`src/data/*.ts`) is the place to edit projects, skills, experience and copy — the components read from there.
