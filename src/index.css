@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+@theme {
+  --font-display: "Bricolage Grotesque", "Manrope", sans-serif;
+  --font-sans: "Manrope", system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+
+  --color-bg: #050505;
+  --color-bg-elevated: #0a0a0a;
+  --color-bg-elevated-2: #101010;
+  --color-fg: #f1efe8;
+  --color-fg-muted: #8e8b84;
+  --color-fg-faint: #55534e;
+  --color-accent: #c8a96b;
+  --color-accent-soft: #d8bd83;
+  --color-line: rgba(255, 255, 255, 0.06);
+  --color-line-strong: rgba(255, 255, 255, 0.1);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+
+  --breakpoint-xs: 22.5rem;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    background: var(--color-bg);
+    color-scheme: dark;
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+    overscroll-behavior: none;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  a,
+  button {
+    color: inherit;
+  }
+
+  button {
+    font-family: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Visible focus for keyboard users only */
+  :focus {
+    outline: none;
+  }
+  :focus-visible {
+    outline: 1.5px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+/* Process section: active node highlight, driven by scroll-linked progress fill */
+.process-node.is-active .process-icon {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.experience-row.is-active {
+  opacity: 1;
+}
+.experience-row.is-active .experience-dot {
+  background: var(--color-accent);
+  box-shadow: 0 0 0 4px rgba(200, 169, 107, 0.18);
+}
+
+/* Lenis smooth-scroll required hooks */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Custom cursor: hide native cursor only when our cursor is active */
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

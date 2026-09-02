@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#050505" />
+    <script>
+      // Reverses the redirect encoding from 404.html so deep links (e.g. a direct
+      // load of /work/some-project) resolve correctly on GitHub Pages' static hosting.
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(null, "", l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      })(window.location);
+    </script>
+
+    <title>Sree — Creative Developer &amp; 3D Web Designer</title>
+    <meta name="description" content="Sree is a creative developer building digital experiences that feel alive — websites, apps, ERP &amp; CRM systems, Shopify stores and interactive WebGL experiences." />
+    <link rel="canonical" href="https://example.com/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sree — Creative Developer &amp; 3D Web Designer" />
+    <meta property="og:description" content="Digital experiences that feel alive — websites, apps, business systems and interactive 3D experiences." />
+    <meta property="og:image" content="/og-cover.jpg" />
+    <meta property="og:url" content="https://example.com/" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sree — Creative Developer &amp; 3D Web Designer" />
+    <meta name="twitter:description" content="Digital experiences that feel alive — websites, apps, business systems and interactive 3D experiences." />
+    <meta name="twitter:image" content="/og-cover.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
